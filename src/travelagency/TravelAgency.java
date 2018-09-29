@@ -89,9 +89,8 @@ public class TravelAgency {
         Hotel hotel = new Hotel("Fontanar", "CRA. 21a #159a-28");
         Travel viaje = new Travel(start, 30, hotel);        
         Airport salida = new Airport("Jose Maria Cordoba");
-        Airport llegada = new Airport("Aeropuertoel Dorado");
+        Airport llegada = new Airport("Aeropuerto El Dorado");
         viaje.insertar_outbond(1345, start, start, salida, llegada);
-        viaje.insertar_return(1355, start, start, llegada, salida);
         anadir_hotel(hotel);
         anadir_travel(viaje);
         anadir_airport(salida);
@@ -103,10 +102,18 @@ public class TravelAgency {
         for (int i = 0; i < 9; i++) {
             if (offeredtravels[i] != null) {
                 System.out.println("Vuelo " + a);
-                System.out.println("El numero del vuelo de la reserva de salida es: " + offeredtravels[i].getOutbond().getFlightnumber());
-                System.out.println("La descripcion del aeropuerto de salida es: " + offeredtravels[i].getOutbond().getFrom().getDescription());
-                System.out.println("El numero del vuelo de la reserva de retorno es: " + offeredtravels[i].getReturnd().getFlightnumber());
-                System.out.println("La descripcion del aeropuerto de retorno es: " + offeredtravels[i].getReturnd().getFrom().getDescription());
+                if (offeredtravels[i].getOutbond() != null) {
+                    System.out.println("El numero del vuelo de la reserva de salida es: " + offeredtravels[i].getOutbond().getFlightnumber());
+                    System.out.println("La descripcion del aeropuerto de salida es: " + offeredtravels[i].getOutbond().getFrom().getDescription());
+                }else{
+                    System.out.println("No hay ningun vuelo de salida agendado.");
+                }
+                if (offeredtravels[i].getReturnd() != null) {
+                    System.out.println("El numero del vuelo de la reserva de retorno es: " + offeredtravels[i].getReturnd().getFlightnumber());
+                    System.out.println("La descripcion del aeropuerto de retorno es: " + offeredtravels[i].getReturnd().getFrom().getDescription());
+                }else{
+                    System.out.println("No hay ningun vuelo de retorno agendado.");
+                }
                 a++;
             }
         }
